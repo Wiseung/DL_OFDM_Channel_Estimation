@@ -1,0 +1,62 @@
+[experiment]
+name = "mimo_2x2_smoke"
+seed = 91
+backend = "sionna"
+device = "auto"
+
+[radio]
+num_subcarriers = 64
+num_ofdm_symbols = 14
+pilot_ofdm_symbol_indices = [2, 11]
+pilot_pattern = "kronecker"
+num_tx = 1
+num_streams_per_tx = 2
+num_tx_ant = 2
+num_rx_ant = 2
+modulation = "qpsk"
+num_bits_per_symbol = 2
+channel_model = "TDL-C"
+delay_spread_s = 1e-7
+speed_m_per_s = 10.0
+carrier_frequency_hz = 3.5e9
+subcarrier_spacing_hz = 15000.0
+
+[dataset]
+output_dir = "../artifacts/datasets/mimo_2x2_smoke"
+train_shards = 1
+val_shards = 1
+test_shards = 1
+samples_per_shard = 4
+train_snr_min_db = 5.0
+train_snr_max_db = 5.0
+val_snr_db = 5.0
+test_snr_db = 5.0
+
+[model]
+architecture = "mimo_factorized"
+in_channels = 8
+out_channels = 8
+base_channels = 16
+num_res_blocks = 2
+link_channels = 16
+mix_channels = 32
+per_link_res_blocks = 1
+cross_res_blocks = 2
+refine_res_blocks = 1
+
+[training]
+batch_size = 2
+epochs = 1
+learning_rate = 0.001
+weight_decay = 0.0
+amp = false
+early_stopping_patience = 1
+num_workers = 0
+checkpoint_dir = "../artifacts/checkpoints/mimo_2x2_smoke"
+log_every_steps = 1
+
+[evaluation]
+snr_db = [5.0]
+batches_per_snr = 1
+batch_size = 2
+output_dir = "../artifacts/eval/mimo_2x2_smoke"

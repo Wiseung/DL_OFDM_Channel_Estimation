@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ofdm-channel-estimation"
+version = "0.1.0"
+description = "SISO OFDM channel estimation baseline with Sionna and PyTorch"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "torch>=2.1",
+  "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+wsl = [
+  "sionna>=2.0",
+  "scipy>=1.12",
+  "pandas>=2.2",
+]
+
+[project.scripts]
+generate_dataset = "ofdm_ce.cli:generate_dataset_main"
+train_cnn = "ofdm_ce.cli:train_cnn_main"
+eval_nmse = "ofdm_ce.cli:eval_nmse_main"
+eval_ber = "ofdm_ce.cli:eval_ber_main"
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
