@@ -12,7 +12,7 @@ The implementation currently covers:
 - SISO `TDL-C`
 - SISO `CDL-C`
 - `2x2 MIMO` `TDL-C`
-- `2x2 MIMO` `CDL-C` smoke-level support in the simulator path
+- `2x2 MIMO` `CDL-C`
 
 ## Repository Layout
 
@@ -22,6 +22,8 @@ configs/
   baseline_wsl_local.toml
   cdl_c_siso_smoke.toml
   cdl_c_siso_wsl_local.toml
+  mimo_2x2_cdl_c_smoke.toml
+  mimo_2x2_cdl_c_wsl_local.toml
   mimo_2x2_smoke.toml
   mimo_2x2_wsl_local.toml
 scripts/
@@ -109,6 +111,8 @@ Current headline numbers:
 - `TDL-C SISO @ 10 dB`: `LS-lin = -10.45 dB`, `DL = -22.89 dB`
 - `CDL-C SISO @ 10 dB`: `LS-lin = -10.45 dB`, `DL = -24.05 dB`
 - `2x2 MIMO TDL-C @ 10 dB`: `LS-lin BER = 4.13e-2`, `DL BER = 2.88e-2`
+
+For `2x2 MIMO CDL-C`, use `configs/mimo_2x2_cdl_c_smoke.toml` for smoke checks and `configs/mimo_2x2_cdl_c_wsl_local.toml` for the full WSL baseline run.
 
 ## Notes on Sionna
 
